@@ -1,28 +1,18 @@
 import React, { useState, createRef } from 'react';
-import { Container, Dimmer, Loader, Grid, Sticky, Message } from 'semantic-ui-react';
+import { Container, Dimmer, Loader, Grid, Message } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 import { DeveloperConsole } from './substrate-lib/components';
 
-import AccountSelector from './AccountSelector';
-import Balances from './Balances';
+import BlockInfo from './Block';
 import BlockNumber from './BlockNumber';
-import Events from './Events';
-import Interactor from './Interactor';
 import Metadata from './Metadata';
 import NodeInfo from './NodeInfo';
-import TemplateModule from './TemplateModule';
-import Transfer from './Transfer';
-import Upgrade from './Upgrade';
 
 function Main () {
-  const [accountAddress, setAccountAddress] = useState(null);
+  const [accountAddress] = useState(null);
   const { apiState, keyring, keyringState, apiError } = useSubstrate();
-  const accountPair =
-    accountAddress &&
-    keyringState === 'READY' &&
-    keyring.getPair(accountAddress);
 
   const loader = text =>
     <Dimmer active>
@@ -50,9 +40,6 @@ function Main () {
 
   return (
     <div ref={contextRef}>
-      <Sticky context={contextRef}>
-        <AccountSelector setAccountAddress={setAccountAddress} />
-      </Sticky>
       <Container>
         <Grid stackable columns='equal'>
           <Grid.Row stretched>
@@ -62,18 +49,7 @@ function Main () {
             <BlockNumber finalized />
           </Grid.Row>
           <Grid.Row stretched>
-            <Balances />
-          </Grid.Row>
-          <Grid.Row>
-            <Transfer accountPair={accountPair} />
-            <Upgrade accountPair={accountPair} />
-          </Grid.Row>
-          <Grid.Row>
-            <Interactor accountPair={accountPair} />
-            <Events />
-          </Grid.Row>
-          <Grid.Row>
-            <TemplateModule accountPair={accountPair} />
+            <BlockInfo />
           </Grid.Row>
         </Grid>
       </Container>
