@@ -8,6 +8,8 @@ The website is live on github pages [here](https://martinloesethjensen.github.io
 yarn deploy
 ```
 
+------------------------------
+
 # Substrate Front End Template
 
 This template allows you to create a front-end application that connects to a
