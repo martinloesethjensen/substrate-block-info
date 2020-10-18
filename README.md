@@ -1,5 +1,7 @@
 # Substrate Block Info
 
+The website is live on github pages [here](https://martinloesethjensen.github.io/substrate-block-info/)
+
 ## To deploy on GitHub Pages
 
 ```sh
