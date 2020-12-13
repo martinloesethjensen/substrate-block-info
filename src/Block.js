@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Modal, Button, Card } from 'semantic-ui-react';
-
 import { useSubstrate } from './substrate-lib';
+export default function Main(props) {
+  const { api } = useSubstrate()
+  const [blockInfo, setBlockInfo] = useState()
 
-export default function Main (props) {
-    const { api } = useSubstrate()
-    const [blockInfo, setBlockInfo] = useState()
-  
-    useEffect(() => {
-      const unsubscribeAll = null
-      const getInfo = async () => {
-        try {
-          api.rpc.chain.subscribeNewHeads((header) => {
-            setBlockInfo(header)
-          })
-        } catch (e) {
-          console.error(e)
-        }
+  useEffect(() => {
+    const unsubscribeAll = null
+    const getInfo = async () => {
+      try {
+        api.rpc.chain.subscribeNewHeads((header) => {
+          setBlockInfo(header)
+        })
+      } catch (e) {
+        console.error(e)
       }
-      getInfo()
-      return () => unsubscribeAll && unsubscribeAll()
-    }, []);
+    }
+    getInfo()
+    return () => unsubscribeAll && unsubscribeAll()
+  }, []);
 
   return (
     <Grid.Column>

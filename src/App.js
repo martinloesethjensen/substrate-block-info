@@ -6,6 +6,7 @@ import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 import { DeveloperConsole } from './substrate-lib/components';
 
 import BlockInfo from './Block';
+import InputBlock from './InputBlock';
 import BlockNumber from './BlockNumber';
 import Metadata from './Metadata';
 import NodeInfo from './NodeInfo';
@@ -50,6 +51,7 @@ function Main () {
           </Grid.Row>
           <Grid.Row stretched>
             <BlockInfo />
+            <InputBlock />
           </Grid.Row>
         </Grid>
       </Container>
