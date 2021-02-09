@@ -1,7 +1,7 @@
 {
   "CUSTOM_TYPES": {
-    "Address": "AccountId",
-    "LookupSource": "AccountId"
+    "Address": "MultiAddress",
+    "LookupSource": "MultiAddress"
   },
   "PROVIDER_SOCKET": "wss://dev-node.substrate.dev"
 }
